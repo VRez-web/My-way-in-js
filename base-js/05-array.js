@@ -1,17 +1,17 @@
 const cars = ['Mazda', 'ford', 'Bmv', 'Mers']
-const people = [{
-        name: 'Victor',
-        budget: 4200
-    },
-    {
-        name: 'Elena',
-        budget: 3500
-    },
-    {
-        name: 'Victoria',
-        budget: 1700
-    },
-]
+// const people = [{
+//         name: 'Victor',
+//         budget: 4200
+//     },
+//     {
+//         name: 'Elena',
+//         budget: 3500
+//     },
+//     {
+//         name: 'Victoria',
+//         budget: 1700
+//     },
+// ]
 const fib = [1, 1, 2, 3, 5, 8, 13]
 
 // cars.push('Reno')
@@ -73,6 +73,98 @@ const fib = [1, 1, 2, 3, 5, 8, 13]
 // }, 0)
 // console.log(allBudget);
 
+const people = [{
+        name: 'Victor',
+        age: 20,
+        budget: 10000
+    },
+    {
+        name: 'Elena',
+        age: 12,
+        budget: 1000
+    },
+    {
+        name: 'Igor',
+        age: 24,
+        budget: 3500
+    },
+    {
+        name: 'Mihail',
+        age: 15,
+        budget: 6000
+    },
+    {
+        name: 'Victoria',
+        age: 23,
+        budget: 25000
+    },
+    {
+        name: 'Danila',
+        age: 38,
+        budget: 50000
+    },
+]
+
+////==ForEach
+// people.forEach((person,index,pArr) => {
+//     console.log(person)//Каждая строка массива
+//     console.log(index)//индекс каждый строки arr[inxed]
+//     console.log(pArr)//Название переменной которое выводит весь массив
+
+// });
+
+// people.forEach(person => console.log(person))
+
+////==Map
+
+// const newPeople=people.map(person => person.age *3)
+// console.log(newPeople)
+
+////==Filter
+
+// const adults = []
+
+// for (let i = 0; i < people.length; i++) {
+//     if (people[i].age >= 18){
+//         adults.push(people[i])
+//     }
+// }
+
+// const adults = people.filter(person => person.age >= 18)
+// console.log(adults)
+
+
+////==Reduce
+// let amount = 0
+
+// for (let i = 0; i < people.length; i++) {
+//     amount+=people[i].budget
+// }
+// console.log(amount)
+
+// const amount = people.reduce((total, person) =>total + person.budget,0)
+// console.log(amount)
+
+
+////==Find
+// const igor = people.find(person => person.name === 'Igor')
+// console.log(igor)
+
+////==FindIndex
+
+// const igorIndex = people.findIndex(person => person.name === 'Igor')
+// console.log(igorIndex)
+
+
+
+
+
+
+
+
+
+
+///========Задачи================
 ////// Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».
 ///// То есть дефисы удаляются, а все слова после них получают заглавную букву.
 
@@ -100,4 +192,3 @@ const fib = [1, 1, 2, 3, 5, 8, 13]
 ///////////////Напишите функцию filterRangeInPlace(arr, a, b), которая принимает массив arr и удаляет из него все значения кроме тех,
 //  которые находятся между a и b. То есть, проверка имеет вид a ≤ arr[i] ≤ b.
 // Функция должна изменять принимаемый массив и ничего не возвращать. 
-
