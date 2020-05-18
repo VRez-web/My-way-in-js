@@ -184,3 +184,53 @@
 // }
 
 // console.log(sum(3)(5))
+
+
+//======call, bind, apply
+
+function hello() {
+    console.log('hello', this)
+
+}
+
+const person = {
+    name: 'victor',
+    age: 20,
+    sayHello: hello,
+    sayHelliWindow: hello.bind(this),
+    logInfo: function (job, phone) {
+        console.group(`${this.name} info:`)
+        console.log(`Name is ${this.name}`)
+        console.log(`Age is ${this.age}`)
+        console.log(`Job is ${job}`)
+        console.log(`Phone is ${phone}`)
+
+        console.groupEnd()
+    }
+}
+
+const lena = {
+    name: 'Elena',
+    age: 23
+}
+
+const fnLenaInfoLog = person.logInfo.bind(lena, `Frontend`, '8-999-123-12-23')() //надо писать пустыен скобки после применения bind 
+// person.logInfo.call(lena, `Frontend`, '8-999-123-12-23')//call-сразу вызывает функцию
+person.logInfo.apply(lena, ['Frontend', '8-999-123-12-23']) //передаем данные в виде массива
+
+///=====Задачи=====
+
+const array = [1, 2, 3, 4, 5]
+
+function multBy(arr, n) {
+    return arr.map(function (i) {
+        return i * n
+    })
+}
+Array.prototype.mulBy = function (n) {
+  return this.map(function (i) {
+        return i * n
+    }) 
+}
+
+console.log(array.mulBy(2))
