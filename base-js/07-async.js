@@ -1,24 +1,24 @@
 // Event Loop
 
-// const timeout = setTimeout(() => {
+const timeout = setTimeout(() => {
 
-//     console.log('After timeout')
+    console.log('After timeout')
 
-// }, 2500)
-// clearTimeout(timeout)
+}, 2500)
+clearTimeout(timeout)
 
-// const interval = setInterval(()=>{
-//     console.log('After timeout')
+const interval = setInterval(()=>{
+    console.log('After timeout')
 
-// },1000)
-// // clearInterval(interval)
+},1000)
+// clearInterval(interval)
 
-// const delay = (callback, wait = 1000) => {
-//     setTimeout(callback,wait)
-// }
-// delay(()=>{
-//     console.log('after 2 seconds')
-// }, 2000)
+const delay = (callback, wait = 1000) => {
+    setTimeout(callback,wait)
+}
+delay(()=>{
+    console.log('after 2 seconds')
+}, 2000)
 
 const delay = (wait = 1000) => {
     return new Promise((resolve, reject) => {
@@ -30,13 +30,13 @@ const delay = (wait = 1000) => {
     return promise
 }
 
-// delay(2500)
-//     .then(() => {
-//         console.log('After 2 seconds')
+delay(2500)
+    .then(() => {
+        console.log('After 2 seconds')
 
-//     })
-//     .catch(err => console.error('error', err))
-//     .finally(() => console.log('finaly'))
+    })
+    .catch(err => console.error('error', err))
+    .finally(() => console.log('finaly'))
 
 
 const getData = () => new Promise(resolve => resolve(

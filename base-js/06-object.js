@@ -16,41 +16,41 @@ const person = {
     }
 
 }
-// console.log(person.name)
-// console.log(person['age'])
-// console.log(person['complex key'])
+console.log(person.name)
+console.log(person['age'])
+console.log(person['complex key'])
 
-// console.log(person)
-// person.greet()
+console.log(person)
+person.greet()
 
-// person.age++
-// person.languages.push('by')
-// console.log(person)
-// // person['key_4'] = undefined
-// delete person['key_4']
-// console.log(person)
-// console.log(person['key_4'])
+person.age++
+person.languages.push('by')
+console.log(person)
+person['key_4'] = undefined
+delete person['key_4']
+console.log(person)
+console.log(person['key_4'])
 
-// const name = person.name
-// const age = person.age
-// const languages= person.languages
+const name = person.name
+const age = person.age
+const languages= person.languages
 
-// const {name,age:personAge=10,languages}=person
+const {name,age:personAge=10,languages}=person
 
-// for (let key in person) {
-//     if (person.hasOwnProperty(key)) {
-//         console.log('key:', key)
-//         console.log('value', person[key])
-//     }
+for (let key in person) {
+    if (person.hasOwnProperty(key)) {
+        console.log('key:', key)
+        console.log('value', person[key])
+    }
 
-// }
-// Object.keys(person).forEach((key)=>{
-//     console.log('key:', key)
-//     console.log('value', person[key])
-// })
+}
+Object.keys(person).forEach((key)=>{
+    console.log('key:', key)
+    console.log('value', person[key])
+})
 
 //Контекст
-// person.info()
+person.info()
 
 const logger = {
     keys() {
@@ -86,10 +86,37 @@ const logger = {
         }
     }
 }
-// const bound = logger.keys.bind(logger)
-// bound()
+const bound = logger.keys.bind(logger)
+bound()
 
-// // logger.keys.call(person)
-// logger.keysAndValues.call(person)
+logger.keys.call(person)
+logger.keysAndValues.call(person)
 logger.withParams.call(person, true, true, true)
 logger.withParams.apply(person, [true, true, true])
+
+//====Prototype 
+//============Задачи======
+/*С помощью свойства __proto__ задайте прототипы так, чтобы поиск любого свойства выполнялся по следующему пути: pockets → bed → table → head. Например, 
+pockets.pen должно возвращать значение 3 (найденное в table), а bed.glasses – значение 1 (найденное в head).*/
+let head = {
+    glasses: 1
+  }
+  
+  let table = {
+    pen: 3,
+    __proto__:head
+  }
+  
+  let bed = {
+    sheet: 1,
+    pillow: 2,
+    __proto__:table
+  }
+  
+  let pockets = {
+    money: 2000,
+    __proto__:bed
+  }
+
+  console.log(bed.glasses)
+  

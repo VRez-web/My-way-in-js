@@ -1,65 +1,65 @@
 //Number
 
-// const num = 42 //integer
-// const float = 42.42 //float
-// const pow = 10e3 //Степень
-// console.log(pow)
+const num = 42 //integer
+const float = 42.42 //float
+const pow = 10e3 //Степень
+console.log(pow)
 
-// console.log('max_safe_integer:', Number.MAX_SAFE_INTEGER)
-// console.log('возведение в степень 2 в 53', Math.pow(2, 53) - 1)
-// console.log('min_safe_integer:', Number.MIN_SAFE_INTEGER)
-// console.log('Max_value', Number.MAX_VALUE)
-// console.log('min_value', Number.MIN_VALUE)
-// console.log('Positive_infinity', Number.POSITIVE_INFINITY)
-// console.log('Negative_infinity', Number.NEGATIVE_INFINITY)
-// console.log('2/0', 2 / 0)
-// console.log(Number.NaN)
-// const weird = 2 / undefined
-// console.log(isNaN(weird))
-// console.log(Number.isNaN(21))
+console.log('max_safe_integer:', Number.MAX_SAFE_INTEGER)
+console.log('возведение в степень 2 в 53', Math.pow(2, 53) - 1)
+console.log('min_safe_integer:', Number.MIN_SAFE_INTEGER)
+console.log('Max_value', Number.MAX_VALUE)
+console.log('min_value', Number.MIN_VALUE)
+console.log('Positive_infinity', Number.POSITIVE_INFINITY)
+console.log('Negative_infinity', Number.NEGATIVE_INFINITY)
+console.log('2/0', 2 / 0)
+console.log(Number.NaN)
+const weird = 2 / undefined
+console.log(isNaN(weird))
+console.log(Number.isNaN(21))
 
-// console.log(Number.isFinite(Infinity))
-// console.log(Number.isFinite(42))
+console.log(Number.isFinite(Infinity))
+console.log(Number.isFinite(42))
 
-// const stringInt = '40'
-// const stringFloat = '40.42'
-// console.log(Number.parseInt(stringInt) + 2)
-// console.log(Number(stringInt) + 2)
-// console.log(+stringInt + 2)
-// console.log(+'23' + 2)
+const stringInt = '40'
+const stringFloat = '40.42'
+console.log(Number.parseInt(stringInt) + 2)
+console.log(Number(stringInt) + 2)
+console.log(+stringInt + 2)
+console.log(+'23' + 2)
 
-// console.log(parseFloat('32.1') + 2.1)
-// console.log(+stringFloat + 2.1)
+console.log(parseFloat('32.1') + 2.1)
+console.log(+stringFloat + 2.1)
 
-// console.log(0.4 + 0.2) //ОЖидаем 0.6 а получаем- 0.6000000000000001
-// console.log((0.4 + 0.2).toFixed(1)) // Получаем сроку а надо число
-// console.log(+(0.4 + 0.2).toFixed(1)) //Один  вариант
-// console.log(parseFloat((0.4 + 0.2).toFixed(1))) //Второй вариант
+console.log(0.4 + 0.2) //ОЖидаем 0.6 а получаем- 0.6000000000000001
+console.log((0.4 + 0.2).toFixed(1)) // Получаем сроку а надо число
+console.log(+(0.4 + 0.2).toFixed(1)) //Один  вариант
+console.log(parseFloat((0.4 + 0.2).toFixed(1))) //Второй вариант
 
 // BigInt
-// console.log(10n-4)//ошибка нельзя миксовать типы с бигинт
+console.log(10n-4)//ошибка нельзя миксовать типы с бигинт
 
-// console.log(parseInt(10n)-4)
-// console.log(10n- BigInt(4));
-// console.log(5n/2n);
+console.log(parseInt(10n)-4)
+console.log(10n- BigInt(4));
+console.log(5n/2n);
 
 
 // Math-математические операции
-// console.log(Math.E);
-// console.log(Math.PI);
-// console.log(Math.sqrt(25));
-// console.log(Math.pow(5, 3));
-// console.log(Math.abs(-42));
-// console.log(Math.max(42, 12, 30, 23, 11));
-// console.log(Math.min(42, 12, 30, 23, 11));
-// console.log(Math.floor(4.9));
-// console.log(Math.ceil(4.9));
-// console.log(Math.round(4.9));
-// console.log(Math.trunc(4.9));
-// console.log(Math.random());
+console.log(Math.E);
+console.log(Math.PI);
+console.log(Math.sqrt(25));
+console.log(Math.pow(5, 3));
+console.log(Math.abs(-42));
+console.log(Math.max(42, 12, 30, 23, 11));
+console.log(Math.min(42, 12, 30, 23, 11));
+console.log(Math.floor(4.9));
+console.log(Math.ceil(4.9));
+console.log(Math.round(4.9));
+console.log(Math.trunc(4.9));
+console.log(Math.random());
 
 //Примеры использования Math
-// function getRandomBetween(min, max) {
-//     return Math.floor(Math.random() * (max - min + 1) + min)
-// }
-// console.log(getRandomBetween(10, 42))
+function getRandomBetween(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+console.log(getRandomBetween(10, 42))
