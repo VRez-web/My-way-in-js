@@ -1,11 +1,13 @@
 const api = {
     key: "48d422acdb70fe5223a7b14816fc2651",
-    base: "https://api.openweathermap.org/data/2.5/"
+    base: "https://api.openweathermap.org/data/2.5/",
+
 }
 
 const searchbox = document.querySelector('.search-box')
 searchbox.addEventListener('keypress', setQuery)
 
+const alertError = document.querySelector('.modal')
 
 function setQuery(evt) {
     if (evt.keyCode == 13) {
@@ -16,10 +18,16 @@ function setQuery(evt) {
 }
 
 function getResults(query) {
-    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}&lang=ru`)
         .then(weather => {
             return weather.json()
         }).then(displayResults)
+        .catch(error => {
+
+            alertError.style.display = 'flex'
+
+            setTimeout(() =>   alertError.style.display = 'none' , 2000)
+        })
 }
 
 function displayResults(weather) {
@@ -40,11 +48,11 @@ function displayResults(weather) {
 }
 
 function dateBuilder(d) {
-    let months = ["January", "February ", "March ", "April ", "May", "June", "July",
-        "August", "September", "October", "November", "December"
+    let months = ["Январь", "Февраль ", "Март ", "Апрель ", "Май", "Июнь", "Июль",
+        "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
     ]
 
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    let days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"]
     let day = days[d.getDay()]
     let date = d.getDate()
     let month = months[d.getMonth()]
