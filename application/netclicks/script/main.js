@@ -13,7 +13,12 @@ const leftMenu = document.querySelector('.left-menu'),
     description = document.querySelector('.description'),
     modalLink = document.querySelector('.modal__link'),
     searchForm = document.querySelector('.search__form'),
-    searchFormInput = document.querySelector('.search__form-input')
+    searchFormInput = document.querySelector('.search__form-input'),
+    preloader = document.querySelector('.preloader'),
+    dropdown = document.querySelectorAll('.dropdown'),
+    tvShowsHead = document.querySelector('.tv-shows__head'),
+    posterWrapper = document.querySelector('.poster__wrapper'),
+    modalContent = document.querySelector('.modal__content')
 
 // модальное окно для плохого интернета
 const loading = document.createElement('div')
@@ -51,6 +56,14 @@ const DBService = class {
 
 const renderCard = response => {
     tvShowList.textContent = ''
+
+    if (!response.total_results) {
+        loading.remove()
+        tvShowsHead.textContent = 'к сожалению по вашему запросу ничего не найдено...'
+        return
+    }
+
+    tvShowsHead.textContent = 'Результат поиска:'
     response.results.forEach(item => {
 
         const {
@@ -98,9 +111,18 @@ searchForm.addEventListener('submit', event => {
 })
 
 //открытие/закрытие меню
+
+const closeDropdown = () => {
+    dropdown.forEach(item => {
+        item.classList.remove('active')
+
+    })
+}
+
 hamburger.addEventListener('click', event => {
     leftMenu.classList.toggle('openMenu')
     hamburger.classList.toggle('open')
+    closeDropdown()
 })
 
 
@@ -108,6 +130,8 @@ document.addEventListener('click', event => {
     if (!event.target.closest('.left-menu')) {
         leftMenu.classList.remove('openMenu')
         hamburger.classList.remove('open')
+        closeDropdown()
+
     }
 })
 
@@ -121,7 +145,25 @@ leftMenu.addEventListener('click', event => {
         leftMenu.classList.add('openMenu')
         hamburger.classList.add('open')
     }
+
+    if(target.closest('#top-rated')){
+        console.log('top-rated')
+        
+    }
+    if(target.closest('#popular')){
+        console.log('popular')
+        
+    }
+    if(target.closest('#week')){
+        console.log('week')
+        
+    }
+    if(target.closest('#today')){
+        console.log('today')
+        
+    }
 })
+//
 
 // открытие модального окна
 
@@ -131,7 +173,7 @@ tvShowList.addEventListener('click', event => {
     const card = target.closest('.tv-card')
 
     if (card) {
-
+        preloader.style.display = 'block'
         new DBService()
             .getTvShow(card.id)
             .then(({
@@ -142,8 +184,18 @@ tvShowList.addEventListener('click', event => {
                 overview,
                 homepage
             }) => {
-                tvCardImg.src = IMG_URL + posterPath
-                tvCardImg.alt = title
+                if (posterPath) {
+                    tvCardImg.src = IMG_URL + posterPath
+                    tvCardImg.alt = title
+                    posterWrapper.style.display = ''
+                    modalContent.style.paddingLeft = ''
+                } else {
+                    posterWrapper.style.display = 'none'
+                    modalContent.style.paddingLeft = '25px'
+                }
+
+
+
                 modalTitle.textContent = title
                 genresList.textContent = ''
                 for (const item of genres) {
@@ -157,6 +209,9 @@ tvShowList.addEventListener('click', event => {
             .then(() => {
                 document.body.style.overflow = 'hidden'
                 modal.classList.remove('hide')
+            })
+            .finally(() => {
+                preloader.style.display = ''
             })
 
     }
