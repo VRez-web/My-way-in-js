@@ -18,7 +18,8 @@ const leftMenu = document.querySelector('.left-menu'),
     dropdown = document.querySelectorAll('.dropdown'),
     tvShowsHead = document.querySelector('.tv-shows__head'),
     posterWrapper = document.querySelector('.poster__wrapper'),
-    modalContent = document.querySelector('.modal__content')
+    modalContent = document.querySelector('.modal__content'),
+    pagination = document.querySelector('.pagination')
 
 // модальное окно для плохого интернета
 const loading = document.createElement('div')
@@ -35,6 +36,7 @@ const DBService = class {
     }
 
     getData = async url => {
+
         const res = await fetch(url)
         if (res.ok) {
             return res.json()
@@ -49,12 +51,15 @@ const DBService = class {
     // getSearchRsults = query => this.getData(`${SERVER}/search/tv?api_key=${API_KEY}&query=${query}&language=ru-RU`)// один из вариантов как можно делать запрос к серверу только переменнын надо объявить сверху
     getSearchRsults = query => this.getData(`${this.SERVER}/search/tv?api_key=${this.API_KEY}&language=ru-RU&query=${query}`)
     getTvShow = id => this.getData(`${this.SERVER}/tv/${id}?api_key=${this.API_KEY}&language=ru-RU`)
-
+    getTopRated = () => this.getData(`${this.SERVER}/tv/top_rated?api_key=${this.API_KEY}&language=ru-RU`)
+    getPopular = () => this.getData(`${this.SERVER}/tv/popular?api_key=${this.API_KEY}&language=ru-RU`)
+    getTopWeek = () => this.getData(`${this.SERVER}/tv/on_the_air?api_key=${this.API_KEY}&language=ru-RU`)
+    getTopToday = () => this.getData(`${this.SERVER}/tv/airing_today?api_key=${this.API_KEY}&language=ru-RU`)
 }
 
+const dbService = new DBService()
 
-
-const renderCard = response => {
+const renderCard = (response, target) => {
     tvShowList.textContent = ''
 
     if (!response.total_results) {
@@ -63,7 +68,7 @@ const renderCard = response => {
         return
     }
 
-    tvShowsHead.textContent = 'Результат поиска:'
+    tvShowsHead.textContent = target ? target.textContent : 'Результат поиска:'
     response.results.forEach(item => {
 
         const {
@@ -96,6 +101,12 @@ const renderCard = response => {
         loading.remove()
         tvShowList.append(card)
     })
+    pagination.innerHTML = ''
+    if (response.total_pages > 1) {
+        for (let i = 1; i <= response.total_pages; i++) {
+            pagination.innerHTML += `<li><a href="#" class="pages">${i}</a></li>`
+        }
+    }
 }
 
 //Поиск
@@ -105,7 +116,7 @@ searchForm.addEventListener('submit', event => {
     searchFormInput.value = ''
     if (value) {
         tvShows.append(loading)
-        new DBService().getSearchRsults(value).then(renderCard)
+        dbService.getSearchRsults(value).then(renderCard)
     }
 
 })
@@ -146,21 +157,37 @@ leftMenu.addEventListener('click', event => {
         hamburger.classList.add('open')
     }
 
-    if(target.closest('#top-rated')){
-        console.log('top-rated')
-        
+    if (target.closest('#top-rated')) {
+        tvShows.append(loading)
+        dbService.getTopRated().then((response) => {
+            renderCard(response, target)
+        })
+
     }
-    if(target.closest('#popular')){
-        console.log('popular')
-        
+    if (target.closest('#popular')) {
+        tvShows.append(loading)
+        dbService.getPopular().then((response) => {
+            renderCard(response, target)
+        })
     }
-    if(target.closest('#week')){
-        console.log('week')
-        
+
+    if (target.closest('#week')) {
+        tvShows.append(loading)
+        dbService.getTopWeek().then((response) => {
+            renderCard(response, target)
+        })
+
     }
-    if(target.closest('#today')){
-        console.log('today')
-        
+    if (target.closest('#today')) {
+        tvShows.append(loading)
+        dbService.getTopToday().then((response) => {
+            renderCard(response, target)
+        })
+    }
+
+    if (target.closest('#search')) {
+        tvShowList.textContent = ''
+        tvShowsHead.textContent = ''
     }
 })
 //
