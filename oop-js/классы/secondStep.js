@@ -25,3 +25,4 @@ const li = new Person('ghbdtn', 'dfl,gdlg')
 console.log(li)
 console.log(li.sayHello())
 console.log(li.sayHello2())
+
