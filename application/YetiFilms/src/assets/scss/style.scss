@@ -1,0 +1,44 @@
+@import "_global.scss";
+
+.container {
+  margin-top: 80px;
+}
+
+.main-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+
+  &-titles {
+    &__main {
+      font-weight: 400;
+      font-size: 60px;
+    }
+
+    &__subtitle {
+      max-width: 240px;
+      font-size: 24px;
+    }
+  }
+}
+.search {
+  width: 100%;
+
+  &-form {
+
+    &__title{
+      font-size: 24px;
+    }
+    label{
+      width: 100%;
+    }
+    input {
+      border-radius: 5px;
+    }
+  }
+}
