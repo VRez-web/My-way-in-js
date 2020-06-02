@@ -6,16 +6,55 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="main-menu">
-        <div class="main-menu__hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+    <div class="menu">
+      <div class="menu__hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul class="menu__list">
+        <li>
+          <a href="#" class="menu__list-dropdown" title="Рейтинг">
+            <i class="fas fa-fire" aria-hidden="true"></i>
+            <span>Рейтинг</span>
+          </a>
+          <ul class="dropdown-items">
+            <li>
+              <a href="#" id="top-rated">
+                <span>Топ сериалы</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="popular">
+                <span>Популярные</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="menu__list-dropdown" title="Сериалы">
+            <i class="fa fa-tv" aria-hidden="true"></i>
+            <span>Новые эпизоды сериалов</span>
+          </a>
+          <ul class="dropdown-items">
+            <li>
+              <a href="#" id="today">
+                <span>Сегодня</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="week">
+                <span>На неделю</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
     <header class="header container">
-      <section class="header-titles">
+      <section class="header-titles ml-3">
         <h1 class="header-titles__main">
           <span class="text-primary">Y</span>eti<span class="text-primary"
             >F</span
@@ -25,12 +64,65 @@
       </section>
       <section class="search ml-5">
         <form class="search-form">
-            <h2 class="search-form__title">Поиск</h2>
+          <h2 class="search-form__title">Поиск</h2>
           <label
-            ><input type="text" class="form-control" placeholder="Введите название..."
+            ><input
+              type="text"
+              class="search-form__input form-control"
+              placeholder="Введите название..."
           /></label>
         </form>
       </section>
     </header>
+
+    <main>
+      <div class="container">
+        <section class="tv">
+          <h2 class="tv-title">Результат поиска:</h2>
+          <ul class="tv-list mt-5">
+            <li class="tv-list__item">
+              <a href="#" class="tv-card">
+                <span class="tv-card__vote">1</span>
+                <img src="http://placehold.it/250x250/" alt="">
+                <h4 class="tv-card__title">привет хочу питсы</h4>
+              </a>
+            </li>
+            <li class="tv-list__item">
+              <a href="#" class="tv-card">
+                <span class="tv-card__vote">1</span>
+                <img src="http://placehold.it/250x250/" alt="">
+                <h4 class="tv-card__title">ПИТЫВолталдывтаьлдыа</h4>
+              </a>
+            </li>
+            <li class="tv-list__item">
+              <a href="#" class="tv-card">
+                <span class="tv-card__vote">1</span>
+                <img src="http://placehold.it/250x250/" alt="">
+                <h4 class="tv-card__title">ПИТЫВолталдывтаьлдыа</h4>
+              </a>
+            </li>
+            <li class="tv-list__item">
+              <a href="#" class="tv-card">
+                <span class="tv-card__vote">1</span>
+                <img src="http://placehold.it/250x250/" alt="">
+                <h4 class="tv-card__title">ПИТЫВолталдывтаьлдыа</h4>
+              </a>
+            </li>
+            <li class="tv-list__item">
+              <a href="#" class="tv-card">
+                <span class="tv-card__vote">1</span>
+                <img src="http://placehold.it/250x250/" alt="">
+                <h4 class="tv-card__title">ПИТЫВолталдывтаьлдыа</h4>
+              </a>
+            </li>
+            
+          </ul>
+        </section>
+      </div>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/4a9cf78f7d.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
